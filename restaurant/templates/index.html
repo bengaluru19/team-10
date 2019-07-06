@@ -336,16 +336,16 @@
                         </div>
                         <h4 class="form-title">Give us your details</h4>
                         
-                        <form id="contact-form" method="post" class="reservations-box" name="contactform" action="mail.php">
+                        <form id="register" method="POST" class="reservations-box" name="contactform" action="/register">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="text" name="form_name" id="form_name" placeholder="Name" required="required" data-error="Firstname is required.">
+                                    <input type="text" name="name" id="form_name" placeholder="Name" required="required" data-error="Firstname is required.">
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="email" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
+                                    <input type="text" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
                                 </div>
                             </div>
                             <!-- end col -->
@@ -364,12 +364,29 @@
                             
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="reserve-book-btn text-center">
-                                        <a href="/survey.html"><button class="hvr-underline-from-center" type="submit" value="SEND" id="submit" >BUILD A PLAYGROUND </button></a>
+                                        <input  class="hvr-underline-from-center" type="submit" value="SEND" id="register">Build playground</input>
                                 </div>
                             </div>
                             <!-- end col -->
                         </form>
                         <!-- end form -->
+                        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script>
+			$('#register').on('submit', function(e){
+		
+				e.preventDefault();
+				$.ajax({
+					url: 'http://127.0.0.1:5000/register/',
+					data: {'name': "sa",'email':"sanjithagowda8@gmail.com",'phone': "8880"},
+					method: 'POST',
+					success: function(data) {
+						// $('#num').val('');
+                        // $('#square').html('Square of ' + number + ' is ' + data['square'])
+                        console.log(data)
+					}
+				});
+			});
+		</script>
                     </div>
                     <!-- end col -->
                 </div>
