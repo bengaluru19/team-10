@@ -32,12 +32,12 @@
     know = {
                 "hello" : "Welcome to AntHill Creations",
                 "hi" : "Welcome to AntHill Creations, ask me anything regarding the form?",
-                "I dont know my site area" : "You can give us estimations",
-                "What is the meaning of vandalism" : "action involving deliberate destruction of or damage to public or private property.",
-                "I dont know the soil condition" : "We'll contact you and give you the details",
-                "What is a snake prone area?" : "Snakes thrive in areas where there are plenty of frogs, birds and small mammals, such areas are usually snake prone.",
-                "Are you providing learning aides?" : "Yes we are.",
-                "How would you maintain the playground?" : "We will send volunteers for it."
+                "site area" : "You can give us estimations",
+                "vandalism" : "action involving deliberate destruction of or damage to public or private property.",
+                "soil condition" : "We'll contact you and give you the details",
+                "snake prone area?" : "Snakes thrive in areas where there are plenty of frogs, birds and small mammals, such areas are usually snake prone.",
+                "learning?" : "Yes we are.",
+                "maintain the playground?" : "We will send volunteers for it."
                 };
 function openForm() {
 
@@ -45,11 +45,85 @@ function openForm() {
   
 }
 
+function similarity(s1, s2) {
+  var longer = s1;
+  var shorter = s2;
+  if (s1.length < s2.length) {
+    longer = s2;
+    shorter = s1;
+  }
+  var longerLength = longer.length;
+  if (longerLength == 0) {
+    return 1.0;
+  }
+  return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+}
+
+function editDistance(s1, s2) {
+  s1 = s1.toLowerCase();
+  s2 = s2.toLowerCase();
+
+  var costs = new Array();
+  for (var i = 0; i <= s1.length; i++) {
+    var lastValue = i;
+    for (var j = 0; j <= s2.length; j++) {
+      if (i == 0)
+        costs[j] = j;
+      else {
+        if (j > 0) {
+          var newValue = costs[j - 1];
+          if (s1.charAt(i - 1) != s2.charAt(j - 1))
+            newValue = Math.min(Math.min(newValue, lastValue),
+              costs[j]) + 1;
+          costs[j - 1] = lastValue;
+          lastValue = newValue;
+        }
+      }
+    }
+    if (i > 0)
+      costs[s2.length] = lastValue;
+  }
+  return costs[s2.length];
+}
+
 function chatbot()
 {
     var user = document.getElementById("User");
     var input = document.getElementById("chatArea").value;
-    input=input.trim();
+    var inputarr=input.replace(" ",'+');
+    console.log("inputarr "+inputarr);
+    var apiEndPoint = "https://api.textgears.com/check.php?text="+inputarr+"&key=DEMO_KEY";
+    var request = new XMLHttpRequest();
+    request.open('GET', apiEndPoint , true);
+    request.send();
+    
+    //api sttuffs`
+    request.onload = function() {
+        // Begin accessing JSON data here
+            var data = JSON.parse(this.response)
+            console.log(request.status);
+            if (request.status >= 200 && request.status < 400) {
+                var error = data.errors;
+                error.forEach(element => {
+                    input=input.replace(element.bad,element.better[0]);
+                });
+                console.log(input); 
+                user.innerHTML = input;
+                var max=0;
+                for(var key in know)
+                {
+                    if(similarity(key,input)>max)
+                    {
+                        max=similarity(key,input);
+                        output = know[key];
+                    }
+                }
+                bot.innerHTML = output;
+            }
+        }
+    
+    //api stuffs ends
+
     var bot = document.getElementById("Bot");
     console.log(input);
     user.innerHTML = input;
