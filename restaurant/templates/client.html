@@ -36,6 +36,48 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<script>
+// var mysql = require('mysql');
+
+// var con = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "anthills"
+// });
+
+// con.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+//   //Insert a record in the "customers" table:
+//   var sql = "INSERT INTO client (cid, email, phone, name) VALUES (1, 'Highway 37','554','sdds')";
+//   con.query(sql, function (err, result) {
+//     if (err) throw err;
+//     console.log("1 record inserted");
+//   });
+// });
+
+var connection = new ActiveXObject("ADODB.Connection") ;
+
+var connectionstring="Data Source=localhost;User ID=root;Password=;Provider=PHPMYADMIN";
+
+connection.Open(connectionstring);
+var rs = new ActiveXObject("ADODB.Recordset");
+
+rs.Open("SELECT * FROM table", connection);
+rs.MoveFirst
+while(!rs.eof)
+{
+   document.write(rs.fields(1));
+   rs.movenext;
+}
+
+rs.close;
+connection.close; 
+
+
+</script>
+
 
 </head>
 
@@ -63,7 +105,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="active"><a href="#banner">Home</a></li>
                                     <li><a href="#about">About us</a></li>
-                                    <li><a href="/client.html">Client Login</a></li>
+                                    <li><a href="#gallery">Client Login</a></li>
                                     <li><a href="#blog">Admin Login</a></li>
                                     <li><a href="#our_team">Team</a></li>
                                     <li><a href="#footer">Contact us</a></li>
@@ -82,17 +124,13 @@
     </div>
 	<!-- end site-header -->
 	
-    <div id="banner" class="banner full-screen-mode parallax">
+    <div id="banner" class="banner full-screen-mode parallax" >
         <div class="container pr">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="banner-static">
                     <div class="banner-text">
                         <div class="banner-cell">
                             <h1>AntHill Creations <br> <span class="typer" id="some-id" data-delay="200" data-delim=":" data-words="creating smiles" data-colors="black"></span><span class="cursor" data-cursorDisplay="_" data-owner="some-id"></span></h1>
-                            <div class="book-btn">
-                                <br>
-                                <a href="#contact-form" class="table-btn hvr-underline-from-center">Build a Playground</a>
-                            </div>
                             <a href="#about">
                                 <div class="mouse"></div>
                             </a>
@@ -336,16 +374,16 @@
                         </div>
                         <h4 class="form-title">Give us your details</h4>
                         
-                        <form id="register" method="POST" class="reservations-box" name="contactform" action="/register">
+                        <form id="contact-form" method="post" class="reservations-box" name="contactform" action="">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="text" name="name" id="form_name" placeholder="Name" required="required" data-error="Firstname is required.">
+                                    <input type="text" name="form_name" id="form_name" placeholder="Name" required="required" data-error="Firstname is required.">
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
-                                    <input type="text" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
+                                    <input type="email" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
                                 </div>
                             </div>
                             <!-- end col -->
@@ -364,29 +402,12 @@
                             
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="reserve-book-btn text-center">
-                                        <input  class="hvr-underline-from-center" type="submit" value="SEND" id="register">Build playground</input>
+                                    <button class="hvr-underline-from-center" type="submit" value="SEND" id="submit">BUILD A PLAYGROUND </button>
                                 </div>
                             </div>
                             <!-- end col -->
                         </form>
                         <!-- end form -->
-                        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script>
-			$('#register').on('submit', function(e){
-		
-				e.preventDefault();
-				$.ajax({
-					url: 'http://127.0.0.1:5000/register/',
-					data: {'name': "sa",'email':"sanjithagowda8@gmail.com",'phone': "8880"},
-					method: 'POST',
-					success: function(data) {
-						// $('#num').val('');
-                        // $('#square').html('Square of ' + number + ' is ' + data['square'])
-                        console.log(data)
-					}
-				});
-			});
-		</script>
                     </div>
                     <!-- end col -->
                 </div>
