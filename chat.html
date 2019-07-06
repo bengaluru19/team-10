@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script>
+        know = {
+                "hello" : "Welcome to AntHill Creations",
+                "hi" : "Welcome to AntHill Creations, ask me anything regarding the form?",
+                "I dont know my site area" : "You can give us estimations",
+                "What is the meaning of vandalism" : "action involving deliberate destruction of or damage to public or private property.",
+                "I dont know the soil condition" : "We'll contact you and give you the details",
+                "What is a snake prone area?" : "Snakes thrive in areas where there are plenty of frogs, birds and small mammals, such areas are usually snake prone.",
+                "Are you providing learning aides?" : "Yes we are.",
+                "How would you maintain the playground?" : "We will send volunteers for it."
+                };
+
+            function talk() {
+
+                var user = document.getElementById("userBox").value;
+                document.getElementById("userBox").value = "";
+                document.getElementById("chatLog").innerHTML += user+"<br>";
+                if (user in know) {
+                    document.getElementById("chatLog").innerHTML += know[user]+"<br>";
+                } else {
+                    document.getElementById("chatLog").innerHTML += "I don't understand...<br>";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <p id="chatLog">- - C H A T - -<br></p>
+        <input id="userBox" type="text" onkeydown="if (event.keyCode == 13) {talk()}">
+    </body>
+</html>
