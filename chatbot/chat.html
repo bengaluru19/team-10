@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="chat.css">
+</head>
+<body>
+
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <div class="form-container">
+    <h1>Chat</h1>
+    <div class="container" id="User" >
+        <p>Hello. How are you today?</p>
+       
+    </div>
+          
+    <div class="container darker" id="Bot">
+        <p>Hey! I'm fine. Thanks for asking!</p>
+       
+    </div>
+
+    <textarea  id="chatArea" placeholder="Type message.." name="msg" required></textarea>
+
+    <button  class="btn" onclick="chatbot()">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </div>
+</div>
+
+<script>
+    know = {
+                "hello" : "Welcome to AntHill Creations",
+                "hi" : "Welcome to AntHill Creations, ask me anything regarding the form?",
+                "I dont know my site area" : "You can give us estimations",
+                "What is the meaning of vandalism" : "action involving deliberate destruction of or damage to public or private property.",
+                "I dont know the soil condition" : "We'll contact you and give you the details",
+                "What is a snake prone area?" : "Snakes thrive in areas where there are plenty of frogs, birds and small mammals, such areas are usually snake prone.",
+                "Are you providing learning aides?" : "Yes we are.",
+                "How would you maintain the playground?" : "We will send volunteers for it."
+                };
+function openForm() {
+
+  document.getElementById("myForm").style.display = "block";
+  
+}
+
+function chatbot()
+{
+    var user = document.getElementById("User");
+    var input = document.getElementById("chatArea").value;
+    input=input.trim();
+    var bot = document.getElementById("Bot");
+    console.log(input);
+    user.innerHTML = input;
+    user.style.display = "block";
+    var output = "helloa";
+    if (input in know) {
+        output= know[input];
+        } else {
+        output = "I don't understand...";
+    }
+    bot.innerHTML = output;
+    bot.style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+</body>
+</html>
