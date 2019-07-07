@@ -64,7 +64,7 @@ def register():
     cursor.execute("select email from client order by cid desc limit 1")
     
     receiver = cursor.fetchall()
-    globals() ['receiver'] = receiver[0][0]
+    receiver = receiver[0][0]
     print(receiver)
 
 
@@ -80,7 +80,7 @@ def register():
     )
 
     print('*******')
-    return receiver
+    return 'success'
 
 
 @app.route('/survey', methods = ['POST'])
@@ -105,60 +105,60 @@ def survey():
 
     if(snake=='true'):
         receiver = email
- 
-        # body = 
-
+    
+        # body = path
+        contents = ['C:/Users/gowda/Desktop/restaurant/templates/ty.html']
         yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
 
         yag.send(
             to=receiver,
-            subject="Test",
-            contents = body,
-            attachments = path
+            subject="Hello from AntHills",
+            contents = contents,
+            attachments = 'SnakeProne1.pptx'
         )
 
     if(disability=='true'):
         
         receiver = email
- 
-        body = path
-
+    
+        # body = path
+        contents = ['C:/Users/gowda/Desktop/restaurant/templates/ty.html']
         yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
 
         yag.send(
             to=receiver,
-            subject="Test",
-            contents = body,
-            attachments = path
+            subject="Hello from AntHills",
+            contents = contents,
+            attachments = 'Disability.pptx'
         )
-    
+
     else:
         receiver = email
     
-        body = path
-
+        # body = path
+        contents = ['C:/Users/gowda/Desktop/restaurant/templates/ty.html']
         yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
 
         yag.send(
             to=receiver,
-            subject="Test",
-            contents = body,
-            attachments = path
+            subject="Hello from AntHills",
+            contents = contents,
+            attachments = 'Standard1.pptx'
         )
 
     
-    receiver = email
+    # receiver = email
  
-    body = path
+    # # body = path
 
-    yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
+    # yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
 
-    yag.send(
-        to=receiver,
-        subject="Test",
-        contents = body,
-        attachments = path
-    )
+    # yag.send(
+    #     to=receiver,
+    #     subject="Test",
+    #     contents = body,
+    #     attachments = path
+    # )
     return 'success'
 
 
