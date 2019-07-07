@@ -1,0 +1,26 @@
+PSEUDOCODE FOR DESIGN CLASSIFICATION
+if disability == true:
+	if snake == true:
+		design = H
+	else
+		design = E
+else:
+	if snake == true:
+		design = C
+	else:
+		if budget < 250000:
+			if age <=5 :
+				design = F
+			else:
+				design = B
+		else:
+			if waterbody == true:
+				design = G
+			else:
+				if soil == 'wet':
+					design = G
+				elif area <= 900:
+					design = B
+				else:
+ 					design = A
+					
