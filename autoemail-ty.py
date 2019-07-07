@@ -2,8 +2,8 @@
 import yagmail
 # connect to smtp server.
 yag_smtp_connection = yagmail.SMTP( user="codeforgoodteam101@gmail.com", password="", host='smtp.gmail.com')# email subject
-subject = 'Hello from Richard'
+subject = 'Hello from richard'
 # email content with attached file path.
-contents = ['/home/kaushiksingh/team-10/Auto-Email/late.html']
+contents = ['/home/kaushiksingh/team-10/ty.html']
 # send the email
-yag_smtp_connection.send('alwaysharsh47@gmail.com', subject, contents)
+yag_smtp_connection.send('kaushiksingh001@gmail.com', subject, contents)
