@@ -37,103 +37,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<style>
-
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-
-/* The popup chat - hidden by default */
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.myform-container1 {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
-/* Full-width textarea */
-.myform-container1 textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 100px;
-}
-
-/* When the textarea gets focus, do something */
-.myform-container1 textarea:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/send button */
-.myform-container1 .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.myform-container1 .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.myform-container1 .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-
-/* Chat containers */
-.mycontainer1 {
-    display: none;
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-  }
-  
-  /* Darker chat container */
-  .darker1 {
-    text-align: right;
-    border-color: #ccc;
-    background-color: #ddd;
-  }
-  
-  /* Clear floats */
-  .mycontainer1::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-/* Button used to open the chat form - fixed at the bottom of the page */
-</style>
 </head>
 
 <body>
@@ -200,156 +103,41 @@
         <!-- end container -->
     </div>
 
-    
-    
     <div id="reservation" class="reservations-main pad-top-100 pad-bottom-100">
-            <div class="row">
-                <div class="form-reservations-box">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <h2 class="block-title text-center">
-						Client Details			
-					</h2>
-                        </div>
-                        <h4 class="form-title">Give us site details</h4>
-                        
-                        <form id="survey" method="POST" class="reservations-box" name="survey" action="/survey">
-                            <p>Email: <input type="text" size=65 name="email" id="email"> </p><br>   
-                            <p>Site Location: <input type="text" size=65 name="sname" id="sname"> </p><br>   
-                            <p></p>
-
-                          
-                            <p>Budget: <input type="text" name="budget" id="budget"> </p><br>   
-                            
-                            <p>Area(in m<sup>2</sup>) : <input type="text" name="area" id="area"> </p><br>   
-                            
-                            <p>Avg Age Group <input type="text" size=65 name="agegroup" id="agegroup"> </p><br>
-                                <div class="snakeprone">
-                                        <br>Is it a snake prone area?<br>
-                                        <label class="radio">
-                                          <input type="radio" name="snake" id="snake" >
-                                          Yes
-                                        </label>
-                                        <label class="radio">
-                                          <input type="radio" name="snake" id="snake">
-                                          No
-                                        </label>
-                                      </div>  
-                                <div class="disability">
-                                        <br>Is it to be designed for disabled kids?<br>
-                                        <label class="radio">
-                                          <input type="radio" name="disability" id="disability">
-                                          Yes
-                                        </label>
-                                        <label class="radio">
-                                          <input type="radio" name="disability" id="disability">
-                                          No
-                                        </label>
-                                      </div>  
-                                 <div class="maintenance">
-                                        <br>Do you require volunteers for maintenance?<br>
-                                        <label class="radio">
-                                            <input type="radio" name="maintenance" id="maintenance">
-                                            Yes
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="maintenance" id="maintenance">
-                                            No
-                                        </label>
-                                        </div>                                
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="reserve-book-btn text-center">
-                                        <input  class="hvr-underline-from-center" type="submit" value="SEND SURVEY" id="survey">/input>
-                                </div>
+                <div class="row">
+                    <div class="form-reservations-box">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                                <h2 class="block-title text-center">
+                            Client Login			
+                        </h2>
                             </div>
-                            <!-- end col -->
-                        </form>
-                        <!-- end form -->
-                    </div>
-                    <!-- end col -->
-                </div>
-                <!-- end reservations-box -->
-            </div>
-            <!-- end row -->
-            <!-- end container -->
+                            <h4 class="form-title">Login to view your project status</h4>
+                            
+                            <form id="register" method="POST" class="reservations-box" name="contactform" action="/register">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-box">
+                                        <input type="text" name="uname" id="uname" placeholder="Username" required="required" data-error="Username is required.">
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-box">
+                                        <input type="password" name="password" id="password" placeholder="password" required="required" data-error="password is required.">
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                
+                                
+                                <a href="admin_dashboard.html" style="margin-left: 100%"> <h2>Login</h2></a>
+    
+                                <!-- end col -->
+                            </form>
+</div>
+</div>
+</div>
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("input[type='button']").click(function(){
-                var snake = $("input[name='snake']:checked").val();
-               
-            });
-            
-        });
-    </script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("input[type='button']").click(function(){
-            var maintenance = $("input[name='maintenance']:checked").val();
-        
-        });
-        
-    });
-</script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("input[type='button']").click(function(){
-                var disability = $("input[name='disability']:checked").val();
-                       });
-            
-        });
-    </script> -->
-<!-- 
-</script> -->
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>
-			$('#survey').on('submit', function(e){
-        var location= $('#sname').val();
-        // console.log(location)
-        var email= $('#email').val();
-       var minAge = $('#agegroup').val();
-       var maxAge = $('#agegroup').val();
-       var budget=$('#budget').val();
-       var area = $('#area').val();
-                if (document.getElementById("snake").checked == true)
-                    var snake= true
-                else
-                    var snake=false
-
-                    if (document.getElementById("maintenance").checked == true)
-                    var maintenance= true
-                else
-                    var maintenance=false
-                    
-                    if (document.getElementById("disability").checked == true)
-                    var disability= true
-                else
-                    var disability=false
-
-        
-        console.log("here "+location+" "+snake+" "+disability+" "+maintenance+" "+email+ " area: "+area+" minage : "+minAge+" maxage: "+maxAge+'budget : '+budget)
-        
-				e.preventDefault();
-				$.ajax({
-					url: 'http://127.0.0.1:5000/survey',
-					data: {'location':location, 'snake':snake,'disability': disability, 'maintenance': maintenance, 'email': email, 'area':area, 'minage':minAge, 'budget':budget, 'maxage': maxAge},
-					method: 'POST',
-					success: function(data) {
-						console.log(data)
-					}
-				});
-			});
-		</script>
-
-<script>
-
-
-</script>
 
     <!-- end reservations-main -->
     <div id="footer" class="footer-main">
@@ -510,45 +298,6 @@
       </div>
     </div>
     
-    <script>
-        know = {
-                    "hello" : "Welcome to AntHill Creations",
-                    "hi" : "Welcome to AntHill Creations, ask me anything regarding the form?",
-                    "I dont know my site area" : "You can give us estimations",
-                    "What is the meaning of vandalism" : "action involving deliberate destruction of or damage to public or private property.",
-                    "I dont know the soil condition" : "We'll contact you and give you the details",
-                    "What is a snake prone area?" : "Snakes thrive in areas where there are plenty of frogs, birds and small mammals, such areas are usually snake prone.",
-                    "Are you providing learning aides?" : "Yes we are.",
-                    "How would you maintain the playground?" : "We will send volunteers for it."
-                    };
-    function openForm() {
-      document.getElementById("myChatForm").style.display = "block";
-      
-    }
-    function chatbot()
-    {
-        var user = document.getElementById("User");
-        var input = document.getElementById("chatArea").value;
-        input=input.trim();
-        var bot = document.getElementById("Bot");
-        console.log(input);
-        user.innerHTML = input;
-        user.style.display = "block";
-        var output = "helloa";
-        if (input in know) {
-            output= know[input];
-            } else {
-            output = "I don't understand...";
-        }
-        bot.innerHTML = output;
-        bot.style.display = "block";
-    }
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-    </script>
-     
-
 </body>
 
 </html>

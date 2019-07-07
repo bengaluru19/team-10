@@ -27,6 +27,14 @@ cursor = con.cursor()
 def home_page():
     return render_template('index.html')
 
+@app.route('/admin_dashboard.html')
+def admin_dashboard():
+    return render_template('admin_dashboard.html')
+
+@app.route('/client_dashboard.html')
+def client_dashboard():
+    return render_template('client_dashboard.html')
+
 @app.route('/client.html')
 def client_page():
     return render_template('client.html')
@@ -34,6 +42,14 @@ def client_page():
 @app.route('/survey_form.html')
 def survey1():
     return render_template('survey_form.html')
+
+@app.route('/clientLogin.html')
+def clientLogin():
+    return render_template('clientLogin.html')
+
+@app.route('/adminLogin.html')
+def adminLogin():
+    return render_template('adminLogin.html')
 
 @app.route('/register/', methods = ['POST'])
 def register():
@@ -52,18 +68,19 @@ def register():
     print(receiver)
 
 
-    body = "Hello Dude"
+    # body = "Hello Dude"
 
     yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
 
+    contents = ['C:/Users/gowda/Desktop/restaurant/templates/welcome.html']
     yag.send(
-        to=receiver,
-        subject="Test",
-        contents = body
+        to = receiver,
+        subject="Hello from AntHills",
+        contents = contents
     )
 
     print('*******')
-    return 'success'
+    return receiver
 
 
 @app.route('/survey', methods = ['POST'])
@@ -73,31 +90,75 @@ def survey():
     location = request.form['location']
     snake = request.form['snake']
     email = request.form['email']
-    
+    area = request.form['area']
+    minage = request.form['minage']
+    maxage = request.form['maxage']
+    budget = request.form['budget']
     disability = request.form['disability']
     maintenance = request.form['maintenance']
 
-    print(location,snake,disability,maintenance)
-    print(email)
-    # cursor.execute("insert into project (location,snakeprone,email) values (%s,%s,%s)", (location,phone,email))
-    # con.commit()
+    # print(location,snake,disability,maintenance)
+    # print(email)
+   
+    cursor.execute("insert into project (location,email, siteArea, minAge, maxAge, budget, speciallyAbledChildren, requireMaintainance,snakeprone) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)", (location,email, area, minage, maxage,budget,disability,maintenance,snake))
+    con.commit()
 
-    # cursor.execute("select email from client order by cid desc limit 1")
+    if(snake=='true'):
+        receiver = email
+ 
+        # body = 
+
+        yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
+
+        yag.send(
+            to=receiver,
+            subject="Test",
+            contents = body,
+            attachments = path
+        )
+
+    if(disability=='true'):
+        
+        receiver = email
+ 
+        body = path
+
+        yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
+
+        yag.send(
+            to=receiver,
+            subject="Test",
+            contents = body,
+            attachments = path
+        )
     
-    # receiver = cursor.fetchall()
-    # receiver = receiver[0][0]
-    # print(receiver)
-    # body = "Hello Dude"
+    else:
+        receiver = email
+    
+        body = path
 
-    # yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
+        yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
 
-    # yag.send(
-    #     to=receiver,
-    #     subject="Test",
-    #     contents = body
-    # )
+        yag.send(
+            to=receiver,
+            subject="Test",
+            contents = body,
+            attachments = path
+        )
 
-    # print('*******')
+    
+    receiver = email
+ 
+    body = path
+
+    yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
+
+    yag.send(
+        to=receiver,
+        subject="Test",
+        contents = body,
+        attachments = path
+    )
     return 'success'
 
 
