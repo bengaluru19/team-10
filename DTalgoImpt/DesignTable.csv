@@ -1,0 +1,13 @@
+Area (in sqft),Budget,MinAge(years),NumberOfChildren,SoilCondition,ProjectLocation,SnakeProne,Waterbody,Disability,LearningAids,DesignModel
+700,Low,3,50,Rocky,Public,1,0,0,0,C
+1600,Medium,4,100,Soft,Govt,1,0,1,0,H
+1300,Low,3,200,Dry,Public,1,1,0,0,H
+1200,High,5,75,Soft,Private,0,0,1,0,E
+500,Low,4,80,Rocky,Private,0,0,0,0,B
+900,Medium,6,60,Soft,Govt,0,1,1,0,E
+1200,Medium,3,40,Rocky,Public,0,0,0,1,G
+600,Medium,3,70,Rocky,Private,0,0,0,0,A
+1100,Low,3,100,Wet,Public,0,0,0,0,D
+2000,Medium,3,70,Wet,Govt,1,1,1,1,H
+1400,High,1,40,Dry,Public,0,0,0,0,F
+1300,Low,2,50,Soft,Public,0,1,0,0,B
