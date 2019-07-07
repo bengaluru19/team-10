@@ -36,48 +36,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<script>
-// var mysql = require('mysql');
-
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "anthills"
-// });
-
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-//   //Insert a record in the "customers" table:
-//   var sql = "INSERT INTO client (cid, email, phone, name) VALUES (1, 'Highway 37','554','sdds')";
-//   con.query(sql, function (err, result) {
-//     if (err) throw err;
-//     console.log("1 record inserted");
-//   });
-// });
-
-var connection = new ActiveXObject("ADODB.Connection") ;
-
-var connectionstring="Data Source=localhost;User ID=root;Password=;Provider=PHPMYADMIN";
-
-connection.Open(connectionstring);
-var rs = new ActiveXObject("ADODB.Recordset");
-
-rs.Open("SELECT * FROM table", connection);
-rs.MoveFirst
-while(!rs.eof)
-{
-   document.write(rs.fields(1));
-   rs.movenext;
-}
-
-rs.close;
-connection.close; 
-
-
-</script>
-
 
 </head>
 

@@ -213,44 +213,53 @@
                         </div>
                         <h4 class="form-title">Give us site details</h4>
                         
-                        <form id="contact-form" method="post" class="reservations-box" name="gspdetails" action="mail.php">
-                                <p>Site Location: <input type="text" size=65 name="sname"> </p><br>   
+                        <form id="survey" method="POST" class="reservations-box" name="survey" action="/survey">
+                            <p>Email: <input type="text" size=65 name="email" id="email"> </p><br>   
+                            <p>Site Location: <input type="text" size=65 name="sname" id="sname"> </p><br>   
+                            <p></p>
+
+                          
+                            <p>Budget: <input type="number" name="budget" id="budget"> </p><br>   
+                            
+                            <p>Area(in m<sup>2</sup>) : <input type="number" name="area" id="area"> </p><br>   
+                            
+                            <p>Avg Age Group <input type="text" size=65 name="agegroup" id="agegroup"> </p><br>
                                 <div class="snakeprone">
                                         <br>Is it a snake prone area?<br>
                                         <label class="radio">
-                                          <input type="radio" name="answer">
+                                          <input type="radio" name="snake" id="snake" >
                                           Yes
                                         </label>
                                         <label class="radio">
-                                          <input type="radio" name="answer">
+                                          <input type="radio" name="snake" id="snake">
                                           No
                                         </label>
                                       </div>  
                                 <div class="disability">
                                         <br>Is it to be designed for disabled kids?<br>
                                         <label class="radio">
-                                          <input type="radio" name="answer">
+                                          <input type="radio" name="disability" id="disability">
                                           Yes
                                         </label>
                                         <label class="radio">
-                                          <input type="radio" name="answer">
+                                          <input type="radio" name="disability" id="disability">
                                           No
                                         </label>
                                       </div>  
                                  <div class="maintenance">
                                         <br>Do you require volunteers for maintenance?<br>
                                         <label class="radio">
-                                            <input type="radio" name="answer">
+                                            <input type="radio" name="maintenance" id="maintenance">
                                             Yes
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="answer">
+                                            <input type="radio" name="maintenance" id="maintenance">
                                             No
                                         </label>
                                         </div>                                
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="reserve-book-btn text-center">
-                                    <button class="hvr-underline-from-center" type="submit" value="SEND" id="submit" ><a href="survey.html">BUILD A PLAYGROUND</a> </button>
+                                        <input  class="hvr-underline-from-center" type="submit" value="SEND" id="survey">Build playground</input>
                                 </div>
                             </div>
                             <!-- end col -->
@@ -264,6 +273,84 @@
             <!-- end row -->
             <!-- end container -->
     </div>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("input[type='button']").click(function(){
+                var snake = $("input[name='snake']:checked").val();
+               
+            });
+            
+        });
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input[type='button']").click(function(){
+            var maintenance = $("input[name='maintenance']:checked").val();
+        
+        });
+        
+    });
+</script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("input[type='button']").click(function(){
+                var disability = $("input[name='disability']:checked").val();
+                       });
+            
+        });
+    </script> -->
+<!-- 
+</script> -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+			$('#survey').on('submit', function(e){
+        var location= $('#sname').val();
+        // console.log(location)
+        var email= $('#email').val();
+       var minAge = $('#agegroup').val();
+       var maxAge = $('#agegroup').val();
+       var budget=$('#budget').val();
+       var area = $('#area').val();
+                if (document.getElementById("snake").checked == true)
+                    var snake= true
+                else
+                    var snake=false
+
+                    if (document.getElementById("maintenance").checked == true)
+                    var maintenance= true
+                else
+                    var maintenance=false
+                    
+                    if (document.getElementById("disability").checked == true)
+                    var disability= true
+                else
+                    var disability=false
+
+        
+        console.log("here "+location+" "+snake+" "+disability+" "+maintenance+" "+email+ " area: "+area+" minage : "+minAge+" maxage: "+maxAge+'budget : '+budget)
+        
+				e.preventDefault();
+				$.ajax({
+					url: 'http://127.0.0.1:5000/survey',
+					data: {'location':location, 'snake':snake,'disability': disability, 'maintenance': maintenance, 'email': email, 'area':area, 'minage':minAge, 'budget':budget, 'maxage': maxAge},
+					method: 'POST',
+					success: function(data) {
+						console.log(data)
+					}
+				});
+			});
+		</script>
+
+<script>
+
+
+</script>
+
     <!-- end reservations-main -->
     <div id="footer" class="footer-main">
                 <!-- <div class="container"> -->

@@ -3,8 +3,7 @@ from flaskext import mysql
 import yagmail
 import mysql.connector
 
-# mysql = mysql()
-
+# global reciever
 
 app = Flask(__name__)
 # app.config('MYSQL_DATABASE_USER') = 'root'
@@ -32,9 +31,9 @@ def home_page():
 def client_page():
     return render_template('client.html')
 
-@app.route('/survey.html')
-def survey():
-    return render_template('survey.html')
+@app.route('/survey_form.html')
+def survey1():
+    return render_template('survey_form.html')
 
 @app.route('/register/', methods = ['POST'])
 def register():
@@ -49,6 +48,9 @@ def register():
     cursor.execute("select email from client order by cid desc limit 1")
     
     receiver = cursor.fetchall()
+    globals() ['receiver'] = receiver[0][0]
+    print(receiver)
+
 
     body = "Hello Dude"
 
@@ -61,6 +63,43 @@ def register():
     )
 
     print('*******')
+    return 'success'
+
+
+@app.route('/survey', methods = ['POST'])
+def survey():
+
+    print("ssuurrvey")
+    location = request.form['location']
+    snake = request.form['snake']
+    email = request.form['email']
+    
+    disability = request.form['disability']
+    maintenance = request.form['maintenance']
+
+    print(location,snake,disability,maintenance)
+    print(email)
+    # cursor.execute("insert into project (location,snakeprone,email) values (%s,%s,%s)", (location,phone,email))
+    # con.commit()
+
+    # cursor.execute("select email from client order by cid desc limit 1")
+    
+    # receiver = cursor.fetchall()
+    # receiver = receiver[0][0]
+    # print(receiver)
+    # body = "Hello Dude"
+
+    # yag = yagmail.SMTP("codeforgoodteam101@gmail.com", password = "")
+
+    # yag.send(
+    #     to=receiver,
+    #     subject="Test",
+    #     contents = body
+    # )
+
+    # print('*******')
+    return 'success'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
